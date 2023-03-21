@@ -31,6 +31,9 @@ class User {
   @CreateDateColumn()
   createdAt: Date;
 
+  @Column({ default: true })
+  isActive: boolean;
+
   @BeforeUpdate()
   @BeforeInsert()
   hashPassword() {
