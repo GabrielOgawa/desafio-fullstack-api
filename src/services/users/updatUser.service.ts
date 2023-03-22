@@ -7,7 +7,7 @@ import { AppDataSource } from "../../data-source";
 const updateUserService = async (
   userData: IUserUpdate,
   userId: number
-): Promise<any> => {
+): Promise<IUser> => {
   if (Object.keys(userData).includes("id")) {
     throw new AppError("id field cannot be changed", 401);
   }

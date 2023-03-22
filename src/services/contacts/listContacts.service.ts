@@ -5,9 +5,6 @@ import { IContact } from "../../interfaces/contacts";
 
 const listContactService = async (userId: number): Promise<IContact[]> => {
   const contactRepository = AppDataSource.getRepository(Contact);
-  const userRepository = AppDataSource.getRepository(User);
-
-  const user = await userRepository.findOneBy({ id: userId });
 
   const joinContact = await contactRepository
     .createQueryBuilder("contact")
