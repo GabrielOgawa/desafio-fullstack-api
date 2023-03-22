@@ -1,6 +1,5 @@
 import { AppDataSource } from "../../data-source";
 import { Contact } from "../../entities/contacts.entity";
-import { User } from "../../entities/user.entity";
 import { IContact } from "../../interfaces/contacts";
 
 const listContactService = async (userId: number): Promise<IContact[]> => {
