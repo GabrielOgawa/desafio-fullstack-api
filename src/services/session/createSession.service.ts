@@ -1,3 +1,4 @@
+import { ILoginResponse } from './../../interfaces/session/index';
 import { compare } from "bcryptjs";
 import { User } from "../../entities/user.entity";
 import jwt from "jsonwebtoken";
@@ -8,7 +9,7 @@ import { AppError } from "../../errors/AppError";
 const createSessionService = async ({
   email,
   password,
-}: IUserLogin): Promise<string> => {
+}: IUserLogin): Promise<ILoginResponse> => {
   const userRepository = AppDataSource.getRepository(User);
 
   const user = await userRepository.findOneBy({
@@ -33,7 +34,11 @@ const createSessionService = async ({
     expiresIn: "24h",
   });
 
-  return token;
+  return {
+    token: token,
+    userName: user.name,
+    userId: user.id
+  };
 };
 
 export default createSessionService;
