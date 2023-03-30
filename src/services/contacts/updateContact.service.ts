@@ -2,7 +2,7 @@ import { AppError } from "../../errors/AppError";
 import { AppDataSource } from "../../data-source";
 import { IContact, IContactUpdate } from "../../interfaces/contacts";
 import { Contact } from "../../entities/contacts.entity";
-import { contactResponse } from "../../serializers/contact.serializer";
+import { contactResponse, contactUpdate } from "../../serializers/contact.serializer";
 
 const updateContactService = async (
   data: IContactUpdate,
@@ -11,6 +11,16 @@ const updateContactService = async (
   if (Object.keys(data).includes("id")) {
     throw new AppError("id field cannot be changed", 401);
   }
+
+  try {
+    await contactUpdate.validate(data, {
+      stripUnknown: true,
+      abortEarly: false,
+    });
+  } catch (err) {
+    throw new AppError(err.errors);
+  }
+
   const contactRepository = AppDataSource.getRepository(Contact);
   const findContact = await contactRepository.find({
     relations: {

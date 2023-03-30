@@ -10,7 +10,6 @@ const contactSerializer: SchemaOf<IContactRequest> = yup.object().shape({
   name: yup.string().required(),
   email: yup.string().email().required(),
   phone: yup.string().required(),
-  userId: yup.number().required(),
 });
 
 const contactUpdate: SchemaOf<IContactUpdate> = yup.object().shape({
