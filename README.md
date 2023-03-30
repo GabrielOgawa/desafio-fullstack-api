@@ -5,7 +5,8 @@
 <blockquote>
   <p>1. Clone o repositório e instale as dependencias</p>
   <p>2. Altere o aquivo .env.example para .env e adicione as devidas chaves</p>
-  <p>3. Execute o comando >> npm run typeorm migration:run -- -d ./src/data-source <<</p>
+	<p>3. Execute o comando >> npm install << para instalar todas as dependências necessárias para rodar o projeto</p>
+  <p>4. Execute o comando >> npm run typeorm migration:run -- -d ./src/data-source <<</p>
   <p>Por fim execute >> npm run dev << e o servidor estará rodando na porta 3001</p>
 </blockquote>
 
